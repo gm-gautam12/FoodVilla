@@ -1,0 +1,36 @@
+{
+  "name": "foodvilla",
+  "version": "1.0.0",
+  "description": "FoodVilla react app",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gm-gautam12/FoodVilla.git"
+  },
+  "author": "Gautam Mishra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gm-gautam12/FoodVilla/issues"
+  },
+  "homepage": "https://github.com/gm-gautam12/FoodVilla#readme",
+  "devDependencies": {
+    "@babel/core": "^7.23.5",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "parcel": "^2.10.3",
+    "postcss": "^8.4.32",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.3.6"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1"
+  },
+  "browserList": [
+    "last 2 Chrome versions"
+  ]
+}
