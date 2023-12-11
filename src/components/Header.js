@@ -1,5 +1,6 @@
 import React from "react";
-import ReactDom from "react-dom";
+import { Link } from "react-router-dom";
+
 
 const Title = () => (
     <a href="/">
@@ -13,10 +14,10 @@ const Header = () => {
              <Title/>
              <div className="flex">
                 <ul className="flex justify-between">
-                    <li className="m-5 p-5">Home</li>
-                    <li className="m-5 p-5">About</li>
-                    <li className="m-5 p-5">Contact</li>
-                    <li className="m-5 p-5">Cart</li>
+                    <Link to = "/"><li className="m-5 p-5">Home</li></Link>
+                   <Link to = "/about" ><li className="m-5 p-5">About</li></Link>
+                   <Link to = "/contact"><li className="m-5 p-5">Contact</li></Link>
+                   <Link to = "/cart"><li className="m-5 p-5">Cart</li></Link>
                 </ul>
              </div>
         </div>

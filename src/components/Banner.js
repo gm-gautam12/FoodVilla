@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import restaurantList from "../utils/constants";
-import RestaurantCard from "./RestaurantCard";
+import restaurantList from "../utils/constants";``
 
 function filterData(searchText, restaurants) {
   return restaurants.filter((restaurant) =>
@@ -28,41 +27,44 @@ const Banner = ({ onFilterChange }) => {
     }
   };
 
-  // useEffect(() => {
-  //   getRestaurants();
-  // },[]);
+  useEffect(() => {
+    getRestaurants();
+  },[]);
 
   // async function getRestaurants() {
-  //   const data = await fetch("https://www.zomato.com/webroutes/search/home");
+  //   const data = await fetch("https://food-villa-server.vercel.app/api/restaurants?lat=28.4594965&lng=77.0266383&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
   //   const json = await data.json();
 
-  //   setOriginalRestaurants(json?.sections?.SECTION_SEARCH_RESULT[0]);
+  //   setOriginalRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  //   setFilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+       
   // }
 
-  // async function getRestaurants() {
+  async function getRestaurants() {
 
-  //      try{
-  //        const data = await fetch("https://www.zomato.com/webroutes/search/home");
-  //        const json = await data.json();
+       try{
+         const data = await fetch("https://food-villa-server.vercel.app/api/restaurants?lat=28.4594965&lng=77.0266383&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+         const json = await data.json();
 
-  //           async function checkJsonData(jsonData){
+            async function checkJsonData(jsonData){
 
-  //               for(let i=0;i<jsonData?.data?.success?.cards.length;i++){
-  //                   let checkData = ;
+                for(let i=0;i<jsonData?.data?.success?.cards.length;i++){
+                    let checkData = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
-  //                   if(checkData!==undefined){return checkData;}
-  //               }
-  //           }
+                    if(checkData!==undefined){return checkData;}
+                }
+            }
 
-  //           const resData = await checkJsonData(json);
-  //           setOriginalRestaurants(resData);
-  //          setFilteredRestaurants(resData);
+            const resData = await checkJsonData(json);
+            console.log(json);
+            setOriginalRestaurants(resData);
+           setFilteredRestaurants(resData);
 
-  //      } catch(error){
-  //       console.log(error);
-  //      }
+       } catch(error){
+        console.log(error);
+       }
        
-  //  }
+   }
 //   async function checkJsonData(jsonData) {
 //     for (let i = 0; i < jsonData?.data?.success?.cards.length; i++) {
 //         let checkData = jsonData?.data?.success?.cards[i]?.gridWidget?.gridElements?.infoWithStyle?.restaurants;

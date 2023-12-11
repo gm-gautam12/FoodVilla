@@ -21,6 +21,7 @@ const Body = () => {
         </h2>
       </div>
       <div className="flex justify-center flex-wrap">
+        
         {filteredRestaurants.length > 0
           ? filteredRestaurants.map((restaurant, index) => (
               <RestaurantCard key={index} {...restaurant.data} />
