@@ -28,34 +28,41 @@ const Banner = ({ onFilterChange }) => {
     }
   };
 
-  useEffect(() => {
-    getRestaurants();
-  },[]);
+  // useEffect(() => {
+  //   getRestaurants();
+  // },[]);
 
-  async function getRestaurants() {
+  // async function getRestaurants() {
+  //   const data = await fetch("https://www.zomato.com/webroutes/search/home");
+  //   const json = await data.json();
 
-       try{
-         const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=28.5443229&lng=77.25258699999999");
-         const json = await data.json();
+  //   setOriginalRestaurants(json?.sections?.SECTION_SEARCH_RESULT[0]);
+  // }
 
-            async function checkJsonData(jsonData){
+  // async function getRestaurants() {
 
-                for(let i=0;i<jsonData?.data?.success?.cards.length;i++){
-                    let checkData = json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants;
+  //      try{
+  //        const data = await fetch("https://www.zomato.com/webroutes/search/home");
+  //        const json = await data.json();
 
-                    if(checkData!==undefined){return checkData;}
-                }
-            }
+  //           async function checkJsonData(jsonData){
 
-            const resData = await checkJsonData(json);
-            setOriginalRestaurants(resData);
-           setFilteredRestaurants(resData);
+  //               for(let i=0;i<jsonData?.data?.success?.cards.length;i++){
+  //                   let checkData = ;
 
-       } catch(error){
-        console.log(error);
-       }
+  //                   if(checkData!==undefined){return checkData;}
+  //               }
+  //           }
+
+  //           const resData = await checkJsonData(json);
+  //           setOriginalRestaurants(resData);
+  //          setFilteredRestaurants(resData);
+
+  //      } catch(error){
+  //       console.log(error);
+  //      }
        
-   }
+  //  }
 //   async function checkJsonData(jsonData) {
 //     for (let i = 0; i < jsonData?.data?.success?.cards.length; i++) {
 //         let checkData = jsonData?.data?.success?.cards[i]?.gridWidget?.gridElements?.infoWithStyle?.restaurants;
