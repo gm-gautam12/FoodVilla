@@ -32,54 +32,53 @@ const Banner = ({ onFilterChange }) => {
     getRestaurants();
   },[]);
 
-  // async function getRestaurants() {
-
-  //      try{
-  //        const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=28.5443229&lng=77.25258699999999");
-  //        const json = await data.json();
-
-  //           async function checkJsonData(jsonData){
-
-  //               for(let i=0;i<jsonData?.data?.success?.cards.length;i++){
-  //                   let checkData = json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants;
-
-  //                   if(checkData!==undefined){return checkData;}
-  //               }
-  //           }
-
-  //           const resData = await checkJsonData(json);
-  //           setOriginalRestaurants(resData);
-  //          setFilteredRestaurants(resData);
-
-  //      } catch(error){
-  //       console.log(error);
-  //      }
-       
-  //  }
-  async function checkJsonData(jsonData) {
-    for (let i = 0; i < jsonData?.data?.success?.cards.length; i++) {
-        let checkData = jsonData?.data?.success?.cards[i]?.gridWidget?.gridElements?.infoWithStyle?.restaurants;
-
-        if (checkData !== undefined) {
-            return checkData;
-        }
-    }
-}
-
-
   async function getRestaurants() {
-    try {
-        const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=28.5443229&lng=77.25258699999999");
-        const json = await data.json();
-        
-        const resData = await checkJsonData(json);
-        setOriginalRestaurants(resData);
-        setFilteredRestaurants(resData);
 
-    } catch (error) {
-        console.error("Error fetching or processing data:", error);
-    }
-}
+       try{
+         const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=28.5443229&lng=77.25258699999999");
+         const json = await data.json();
+
+            async function checkJsonData(jsonData){
+
+                for(let i=0;i<jsonData?.data?.success?.cards.length;i++){
+                    let checkData = json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants;
+
+                    if(checkData!==undefined){return checkData;}
+                }
+            }
+
+            const resData = await checkJsonData(json);
+            setOriginalRestaurants(resData);
+           setFilteredRestaurants(resData);
+
+       } catch(error){
+        console.log(error);
+       }
+       
+   }
+//   async function checkJsonData(jsonData) {
+//     for (let i = 0; i < jsonData?.data?.success?.cards.length; i++) {
+//         let checkData = jsonData?.data?.success?.cards[i]?.gridWidget?.gridElements?.infoWithStyle?.restaurants;
+
+//         if (checkData !== undefined) {
+//             return checkData;
+//         }
+//     }
+// }
+
+//   async function getRestaurants() {
+//     try {
+//         const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=28.5443229&lng=77.25258699999999");
+//         const json = await data.json();
+        
+//         const resData = await checkJsonData(json);
+//         setOriginalRestaurants(resData);
+//         setFilteredRestaurants(resData);
+
+//     } catch (error) {
+//         console.error("Error fetching or processing data:", error);
+//     }
+// }
 
 
   return (
