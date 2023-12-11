@@ -13,7 +13,7 @@ const RestaurantCard = ({
         />
         <h2 className="font-bold m-1">{name}</h2>
         <h4 className="m-1 text-sm">{cuisines.join(", ")}</h4>
-        <h4 className="m-1 text-sm">{avgRating} &#9733;</h4>
+        <h4 className="m-1 text-sm">Rating : {avgRating} &#9733;</h4>
       </div>
     );
   };
