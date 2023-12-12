@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import restaurantList from "../utils/constants";``
+import restaurantList from "../utils/constants";
+
 
 function filterData(searchText, restaurants) {
   return restaurants.filter((restaurant) =>
@@ -9,8 +10,8 @@ function filterData(searchText, restaurants) {
 
 const Banner = ({ onFilterChange }) => {
   const [searchText, setSearchText] = useState("");
-  const [originalRestaurants, setOriginalRestaurants] = useState(restaurantList);
-  const [filteredRestaurants, setFilteredRestaurants] = useState(restaurantList);
+  const [originalRestaurants, setOriginalRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
  
 
   useEffect(() => {
@@ -31,15 +32,6 @@ const Banner = ({ onFilterChange }) => {
     getRestaurants();
   },[]);
 
-  // async function getRestaurants() {
-  //   const data = await fetch("https://food-villa-server.vercel.app/api/restaurants?lat=28.4594965&lng=77.0266383&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-  //   const json = await data.json();
-
-  //   setOriginalRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-  //   setFilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-       
-  // }
-
   async function getRestaurants() {
 
        try{
@@ -48,7 +40,7 @@ const Banner = ({ onFilterChange }) => {
 
             async function checkJsonData(jsonData){
 
-                for(let i=0;i<jsonData?.data?.success?.cards.length;i++){
+                for(let i=0;i<jsonData?.data?.cards.length;i++){
                     let checkData = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
                     if(checkData!==undefined){return checkData;}
@@ -56,39 +48,27 @@ const Banner = ({ onFilterChange }) => {
             }
 
             const resData = await checkJsonData(json);
-            console.log(json);
-            setOriginalRestaurants(resData);
-           setFilteredRestaurants(resData);
+            const normalised = resData.map((item) => (
+            {type:"restaurant",data:item.info}
+            ))
+              console.log(json);
+            setOriginalRestaurants(normalised);
+           setFilteredRestaurants(normalised);
 
        } catch(error){
         console.log(error);
        }
        
    }
-//   async function checkJsonData(jsonData) {
-//     for (let i = 0; i < jsonData?.data?.success?.cards.length; i++) {
-//         let checkData = jsonData?.data?.success?.cards[i]?.gridWidget?.gridElements?.infoWithStyle?.restaurants;
+  async function checkJsonData(jsonData) {
+    for (let i = 0; i < jsonData?.data?.cards.length; i++) {
+        let checkData = jsonData?.data?.cards?.gridWidget?.gridElements?.infoWithStyle?.restaurants;
 
-//         if (checkData !== undefined) {
-//             return checkData;
-//         }
-//     }
-// }
-
-//   async function getRestaurants() {
-//     try {
-//         const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=28.5443229&lng=77.25258699999999");
-//         const json = await data.json();
-        
-//         const resData = await checkJsonData(json);
-//         setOriginalRestaurants(resData);
-//         setFilteredRestaurants(resData);
-
-//     } catch (error) {
-//         console.error("Error fetching or processing data:", error);
-//     }
-// }
-
+        if (checkData !== undefined) {
+            return checkData;
+        }
+    }
+}
 
   return (
     <>
@@ -122,5 +102,6 @@ const Banner = ({ onFilterChange }) => {
     </>
   );
 };
+
 
 export default Banner;
