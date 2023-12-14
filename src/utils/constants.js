@@ -5,6 +5,10 @@ export const swiggy_menu_api_URL =
 
 export const about_image = "https://foodfire-app.netlify.app/burger-image.ec55d069.png";
 
+
+
+
+
 // const restaurantList = [
 //     {
 //       type: "restaurant",

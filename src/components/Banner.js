@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import restaurantList from "../utils/constants";
+
 
 
 function filterData(searchText, restaurants) {
