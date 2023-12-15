@@ -23,7 +23,7 @@ const RestaurantCard = ({
            : "text-white bg-green-500 rounded p-0.5"
          }`}
            >
-          <FontAwesomeIcon icon={faStar} size="sm" /> {avgRatingString}
+          {/* <FontAwesomeIcon icon={faStar} size="sm" />*/} ⭐{avgRatingString}
           </h5>
           <h5 className="text-gray-600 font-bold text-sm py-0.5">•</h5>
           <h5 className="font-bold text-sm py-0.5">{sla?.lastMileTravelString??'2.0 km'}</h5>
